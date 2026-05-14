@@ -544,6 +544,7 @@ twirlButton.addEventListener("click", triggerTwirl);
 rocketButton.addEventListener("click", triggerRocket);
 trainButton.addEventListener("click", triggerTrain);
 craneButton.addEventListener("click", triggerCrane);
+towTruckButton.addEventListener("click", triggerTow);
 adventureButton.addEventListener("click", triggerAdventure);
 canvas.addEventListener("pointerdown", triggerJump);
 
@@ -557,6 +558,7 @@ window.addEventListener("keydown", (event) => {
   if (event.key.toLowerCase() === "r") triggerRocket();
   if (event.key.toLowerCase() === "c") triggerTrain();
   if (event.key.toLowerCase() === "l") triggerCrane();
+  if (event.key.toLowerCase() === "w") triggerTow();
   if (event.key.toLowerCase() === "p") togglePause();
   if (event.key === "ArrowLeft") previousScene();
   if (event.key === "ArrowRight") nextScene();
@@ -769,6 +771,11 @@ function drawScene(now, progress) {
 
   if (sceneIndex === 21) {
     drawMoonRobotHelperScene(now, progress, spin);
+    return;
+  }
+
+  if (sceneIndex === 22) {
+    drawMoonTowRescueScene(now, progress, spin);
     return;
   }
 
