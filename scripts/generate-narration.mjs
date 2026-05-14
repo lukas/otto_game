@@ -25,6 +25,7 @@ const scenes = [
   "The moon crane gently lifts the cars with a soft star sling.",
   "Crane helper moves rockets and passengers to the birthday train. Beep beep!",
   "A friendly moon robot checks the wheels and waves passengers aboard for cake.",
+  "Honk honk! A friendly moon tow truck gently lifts the woozy car, then scoots the tipped rocket back onto its soft pad. Helpers high-five!",
 ];
 
 const actionPhrases = {
@@ -34,6 +35,7 @@ const actionPhrases = {
   rocket: ["Rocket blast!", "Whoosh to the moon!", "Big rocket fire!"],
   train: ["Chugga chugga!", "All aboard!", "Train goes toot toot!"],
   crane: ["Crane lift!", "Up, up, gentle crane!", "Soft sling delivery!"],
+  tow: ["Tow truck helper!", "Gentle lift, slow roll!", "Moon tow to the rescue!"],
   adventure: ["Adventure time!", "Confetti blast!", "Let's zoom together!"],
 };
 

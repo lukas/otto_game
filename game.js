@@ -1383,6 +1383,91 @@ function drawMoonRover(x, y, now) {
   ctx.restore();
 }
 
+function towTruckHookWorld(truckX, truckY, hookDrop, facing = 1) {
+  const boom = 78 + hookDrop * 34;
+  const hookLocalX = 92 + boom * 0.42;
+  const hookLocalY = -128 - hookDrop * 36;
+  return {
+    hx: truckX + facing * hookLocalX,
+    hy: truckY + hookLocalY,
+  };
+}
+
+function drawTowTruck(x, y, now, options = {}) {
+  const {
+    facing = 1,
+    hookDrop = 0.35,
+    spin = 0,
+  } = options;
+  const towBoost = Math.max(0, state.towUntil - now) / 2200;
+  const wiggle = Math.sin(now / 95) * (2 + towBoost * 5);
+  const boom = 78 + hookDrop * 34;
+
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(spin * 0.1);
+  ctx.scale(facing, 1);
+  ctx.translate(wiggle * 0.22, 0);
+
+  drawWheel(-68, 10);
+  drawWheel(-14, 10);
+  drawWheel(56, 10);
+
+  ctx.fillStyle = "#6ec8ff";
+  roundedRect(-38, -66, 134, 52, 14);
+  ctx.fillStyle = "rgba(255, 255, 255, 0.42)";
+  roundedRect(-24, -58, 108, 12, 6);
+
+  ctx.fillStyle = "#ffe082";
+  roundedRect(-118, -74, 84, 70, 18);
+  ctx.fillStyle = "rgba(110, 200, 255, 0.55)";
+  roundedRect(-102, -58, 52, 34, 10);
+  ctx.fillStyle = "#183a86";
+  circle(-88, -42, 3);
+  circle(-72, -42, 3);
+  ctx.strokeStyle = "#183a86";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(-80, -34, 8, 0.12 * Math.PI, 0.88 * Math.PI);
+  ctx.stroke();
+
+  ctx.save();
+  ctx.translate(18, -92);
+  drawOrbitSparkle(0, 0, "#ffffff", 0.34);
+  ctx.restore();
+
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 7;
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.moveTo(74, -54);
+  ctx.lineTo(84 + boom * 0.22, -118 - hookDrop * 26);
+  ctx.lineTo(92 + boom * 0.42, -128 - hookDrop * 36);
+  ctx.stroke();
+
+  ctx.fillStyle = "#ffd54f";
+  circle(92 + boom * 0.42, -128 - hookDrop * 36, 8);
+
+  ctx.fillStyle = "#ffb3c1";
+  roundedRect(-126, -12, 18, 14, 6);
+
+  ctx.restore();
+}
+
+function drawTowCable(x1, y1, x2, y2, sag = 0.35) {
+  ctx.save();
+  ctx.strokeStyle = "rgba(216, 247, 255, 0.92)";
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  const midX = (x1 + x2) / 2;
+  const midY = (y1 + y2) / 2 + sag * 42;
+  ctx.quadraticCurveTo(midX, midY, x2, y2);
+  ctx.stroke();
+  ctx.restore();
+}
+
 function drawMoonFlag(x, y) {
   ctx.strokeStyle = "#ffffff";
   ctx.lineWidth = 5;
@@ -1547,6 +1632,7 @@ function drawMoonRace(now, progress, spin) {
   drawMoonRaceCar(r2x, r2y, "#34c759", -spin, carPathWheelRoll(r2x, r2y));
   drawRocketDriver(165 + progress * 680, 352, "#ff5757");
   drawRocketDriver(122 + progress * 600, 406, "#6c63ff");
+  drawTowTruck(848, GROUND - 64, now, { facing: -1, hookDrop: 0.22, spin: spin * 0.03 });
 }
 
 function drawMoonDanceParty(now, spin) {
@@ -1602,6 +1688,7 @@ function drawMoonCraneScene(now, progress, cargo, spin) {
     drawCar(150, 416, "#34c759", 0);
     drawRocket(760, 382, -0.18, "#6c63ff");
     drawMoonCraneLandingPad(680, 424, "car spot");
+    drawTowTruck(802, GROUND - 66, now, { facing: -1, hookDrop: 0.28, spin: spin * 0.05 });
     return;
   }
 
@@ -1626,6 +1713,47 @@ function drawMoonRobotHelperScene(now, progress, spin) {
   drawRobotCheckPanel(236, 204, now);
   drawMusicNote(810, 196 + Math.sin(now / 150) * 18, "#8ff7ff", -spin);
   if (progress > 0.5) drawOrbitSparkle(730, 314 + Math.sin(now / 140) * 16, "#ffe66d", 0.5);
+}
+
+function drawMoonTowRescueScene(now, progress, spin) {
+  drawMoonRock(276, 434, 70);
+  drawMoonRock(690, 428, 58);
+
+  const arrive = Math.min(1, Math.max(0, (progress - 0.08) / 0.52));
+  const tuck = Math.min(1, Math.max(0, (progress - 0.55) / 0.45));
+  const carTilt = 0.26 * (1 - tuck * 0.92) + Math.sin(now / 220) * 0.02;
+  const carBaseX = 518 + tuck * 54;
+  const carLift = tuck * 46;
+  const carY = 404 - carLift;
+
+  ctx.save();
+  ctx.translate(carBaseX, carY);
+  ctx.rotate(carTilt + spin * 0.06);
+  drawCar(0, 0, "#ff9f1c", 0);
+  ctx.restore();
+
+  if (tuck < 0.55) {
+    drawOrbitSparkle(carBaseX - 52, carY - 58, "#8ff7ff", 0.34);
+    drawOrbitSparkle(carBaseX + 56, carY - 48, "#ffe66d", 0.3);
+  }
+
+  const rocketTip = Math.min(1, Math.max(0, (progress - 0.38) / 0.62));
+  const rocketFall = (1 - rocketTip) * 0.42;
+  const rocketY = 418 + rocketFall * 40 + Math.sin(now / 260) * 3 - rocketTip * 18;
+  drawRocket(728, rocketY, -0.52 + rocketTip * 0.38 + spin * 0.08, "#6c63ff");
+
+  const truckX = 86 + arrive * 270;
+  const truckY = GROUND - 68;
+  const hookDrop = 0.68 - tuck * 0.62;
+  drawTowTruck(truckX, truckY, now, { hookDrop, spin: spin * 0.04 });
+
+  const { hx: boomAnchorX, hy: boomAnchorY } = towTruckHookWorld(truckX, truckY, hookDrop, 1);
+  const hookX = carBaseX - 6;
+  const hookY = carY - 42 - carLift * 0.35;
+  if (arrive > 0.18) drawTowCable(boomAnchorX, boomAnchorY, hookX, hookY, (1 - tuck) * 0.85);
+
+  drawMoonCraneLandingPad(720, 428, "soft pad");
+  if (tuck > 0.78) drawOrbitSparkle(600, 196 + Math.sin(now / 150) * 12, "#ffffff", 0.42);
 }
 
 function drawFriendlyRobot(x, y, now, waving = false) {

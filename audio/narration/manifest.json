@@ -3,7 +3,7 @@
   "provider": "elevenlabs",
   "modelId": "eleven_multilingual_v2",
   "voiceId": "21m00Tcm4TlvDq8ikWAM",
-  "generatedAt": "2026-05-14T02:17:45.390Z",
+  "generatedAt": "2026-05-14T02:19:43.151Z",
   "scenes": [
     "audio/narration/scene-01.mp3",
     "audio/narration/scene-02.mp3",
@@ -26,7 +26,8 @@
     "audio/narration/scene-19.mp3",
     "audio/narration/scene-20.mp3",
     "audio/narration/scene-21.mp3",
-    "audio/narration/scene-22.mp3"
+    "audio/narration/scene-22.mp3",
+    "audio/narration/scene-23.mp3"
   ],
   "actions": {
     "zoom": [
@@ -58,6 +59,11 @@
       "audio/narration/action-crane-01.mp3",
       "audio/narration/action-crane-02.mp3",
       "audio/narration/action-crane-03.mp3"
+    ],
+    "tow": [
+      "audio/narration/action-tow-01.mp3",
+      "audio/narration/action-tow-02.mp3",
+      "audio/narration/action-tow-03.mp3"
     ],
     "adventure": [
       "audio/narration/action-adventure-01.mp3",
