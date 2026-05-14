@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Node / npm (optional local tooling)
+node_modules/
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*

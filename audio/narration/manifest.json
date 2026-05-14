@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "provider": "elevenlabs",
+  "modelId": "eleven_multilingual_v2",
+  "voiceId": "21m00Tcm4TlvDq8ikWAM",
+  "generatedAt": "2026-05-14T02:17:45.390Z",
+  "scenes": [
+    "audio/narration/scene-01.mp3",
+    "audio/narration/scene-02.mp3",
+    "audio/narration/scene-03.mp3",
+    "audio/narration/scene-04.mp3",
+    "audio/narration/scene-05.mp3",
+    "audio/narration/scene-06.mp3",
+    "audio/narration/scene-07.mp3",
+    "audio/narration/scene-08.mp3",
+    "audio/narration/scene-09.mp3",
+    "audio/narration/scene-10.mp3",
+    "audio/narration/scene-11.mp3",
+    "audio/narration/scene-12.mp3",
+    "audio/narration/scene-13.mp3",
+    "audio/narration/scene-14.mp3",
+    "audio/narration/scene-15.mp3",
+    "audio/narration/scene-16.mp3",
+    "audio/narration/scene-17.mp3",
+    "audio/narration/scene-18.mp3",
+    "audio/narration/scene-19.mp3",
+    "audio/narration/scene-20.mp3",
+    "audio/narration/scene-21.mp3",
+    "audio/narration/scene-22.mp3"
+  ],
+  "actions": {
+    "zoom": [
+      "audio/narration/action-zoom-01.mp3",
+      "audio/narration/action-zoom-02.mp3",
+      "audio/narration/action-zoom-03.mp3"
+    ],
+    "jump": [
+      "audio/narration/action-jump-01.mp3",
+      "audio/narration/action-jump-02.mp3",
+      "audio/narration/action-jump-03.mp3"
+    ],
+    "twirl": [
+      "audio/narration/action-twirl-01.mp3",
+      "audio/narration/action-twirl-02.mp3",
+      "audio/narration/action-twirl-03.mp3"
+    ],
+    "rocket": [
+      "audio/narration/action-rocket-01.mp3",
+      "audio/narration/action-rocket-02.mp3",
+      "audio/narration/action-rocket-03.mp3"
+    ],
+    "train": [
+      "audio/narration/action-train-01.mp3",
+      "audio/narration/action-train-02.mp3",
+      "audio/narration/action-train-03.mp3"
+    ],
+    "crane": [
+      "audio/narration/action-crane-01.mp3",
+      "audio/narration/action-crane-02.mp3",
+      "audio/narration/action-crane-03.mp3"
+    ],
+    "adventure": [
+      "audio/narration/action-adventure-01.mp3",
+      "audio/narration/action-adventure-02.mp3",
+      "audio/narration/action-adventure-03.mp3"
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Otto's Rocket Car Train Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">A game for Otto</p>
+          <h1>Rocket Car Train Adventure</h1>
+        </div>
+        <div class="top-buttons" aria-label="Sound controls">
+          <button id="soundButton" class="small-button" type="button" aria-pressed="false">
+            Sound Off
+          </button>
+          <button id="narrationButton" class="small-button narration-button" type="button" aria-pressed="false">
+            Narration Off
+          </button>
+        </div>
+      </section>
+
+      <section class="stage-card" aria-label="Game stage">
+        <canvas id="gameCanvas" width="960" height="540">
+          Otto's rocket car train adventure game.
+        </canvas>
+        <div id="storyText" class="story-text" aria-live="polite"></div>
+      </section>
+
+      <section class="scene-controls" aria-label="Story controls">
+        <button id="prevSceneButton" class="scene-button" type="button">Back</button>
+        <button id="playPauseButton" class="scene-button" type="button" aria-pressed="false">Pause</button>
+        <button id="nextSceneButton" class="scene-button" type="button">Next</button>
+        <button id="speedButton" class="scene-button" type="button" aria-label="Change story speed">Speed: Cozy</button>
+      </section>
+
+      <section class="controls" aria-label="Vehicle controls">
+        <button id="goButton" type="button">Zoom!</button>
+        <button id="jumpButton" type="button">Jump!</button>
+        <button id="twirlButton" type="button">Twirl!</button>
+        <button id="rocketButton" type="button">Rocket!</button>
+        <button id="trainButton" type="button">Train!</button>
+        <button id="craneButton" type="button">Crane!</button>
+        <button id="towTruckButton" type="button">Tow!</button>
+        <button id="adventureButton" type="button">Party!</button>
+      </section>
+
+      <p class="hint">
+        Turn on Narration for read-aloud story time. Use Back, Next, Pause, and Speed, or tap the big vehicle buttons.
+      </p>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
