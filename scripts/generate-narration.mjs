@@ -44,6 +44,9 @@ const defaultVoiceId = "21m00Tcm4TlvDq8ikWAM";
 const args = new Set(process.argv.slice(2));
 const force = args.has("--force");
 
+// Scene strings must match game.js `const scenes = [ ... ]` `text` fields in order
+// (`scene-01.mp3` … scene-N.mp3 stay aligned only if this list matches the running game).
+
 if (!apiKey) {
   console.error("Set ELEVENLABS_API_KEY before generating narration.");
   process.exit(1);

@@ -49,3 +49,5 @@ ELEVENLABS_VOICE_ID=voice-id ELEVENLABS_MODEL_ID=eleven_multilingual_v2 node scr
 ```
 
 Do not put API keys in this repo. Keep them in your shell environment or a local secret manager.
+
+If you reorder, add, or remove story scenes, run with `--force` so every `scene-*.mp3` stays matched to the scene list (filenames are positional).
